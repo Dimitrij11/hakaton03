@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enrollment extends Model
+class Enroll extends Model
 {
     use HasFactory;
+
+    protected $table = 'enrolls';
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +19,8 @@ class Enrollment extends Model
     protected $fillable = [
         'user_id',
         'course_id',
-        'progress',
-        'completed',
+        'enrollment_date',
+        'status',
         'completion_date',
     ];
 
@@ -28,8 +30,7 @@ class Enrollment extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'progress' => 'integer',
-        'completed' => 'boolean',
+        'enrollment_date' => 'datetime',
         'completion_date' => 'datetime',
     ];
 

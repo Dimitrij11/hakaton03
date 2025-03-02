@@ -2,22 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ForumComment extends Model
 {
+    use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'post_id',
         'user_id',
-        'thread_id',
         'content',
-        'parent_id',
+        'status',
     ];
 
     /**
@@ -50,5 +53,11 @@ class ForumComment extends Model
     public function replies(): HasMany
     {
         return $this->hasMany(ForumComment::class, 'parent_id');
+    }
+
+    // Relationship to ForumPost
+    public function post()
+    {
+        return $this->belongsTo(ForumPost::class, 'post_id');
     }
 }
