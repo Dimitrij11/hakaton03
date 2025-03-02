@@ -10,11 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->softDeletes(); // Adds `deleted_at` column to `messages`
-        });
-    }
+{
+    Schema::table('messages', function (Blueprint $table) {
+        if (!Schema::hasColumn('messages', 'deleted_at')) {
+            $table->softDeletes();
+        }
+    });
+}
+
 
     /**
      * Reverse the migrations.

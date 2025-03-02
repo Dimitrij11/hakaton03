@@ -8,7 +8,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('views', function (Blueprint $table) {
-            $table->timestamp('viewed_at')->nullable()->after('lesson_id');
+            if (!Schema::hasColumn('views', 'viewed_at')) {
+                $table->timestamp('viewed_at')->nullable();
+            }
         });
     }
 
@@ -19,3 +21,5 @@ return new class extends Migration {
         });
     }
 };
+
+
