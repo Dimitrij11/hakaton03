@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Links achievement to a user
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); // Allow NULL user_id
             $table->string('name'); // Achievement title (e.g., "Python Master", "Certified Developer")
             $table->text('description')->nullable(); // Optional description of the achievement
             $table->timestamps(); // Created_at and updated_at timestamps

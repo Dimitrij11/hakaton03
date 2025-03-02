@@ -5,12 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProfessorData extends Model {
+class ProfessorData extends Model
+{
     use HasFactory;
 
-    protected $fillable = ['user_id', 'department', 'bio'];
+    protected $table = 'professors_data'; // ✅ Explicitly define the correct table name
 
-    public function user() {
+    protected $fillable = [
+        'user_id',
+        'position',
+        'company',
+        'gender',
+        'birth_date',
+        'work_experience_years'
+    ];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

@@ -11,9 +11,11 @@ return new class extends Migration {
             $table->id(); // Auto-increment primary key
             $table->string('name'); // Name of the user
             $table->string('email')->unique(); // Unique email for login
+            $table->timestamp('email_verified_at')->nullable(); 
             $table->string('password'); // Encrypted password
             $table->string('profile_picture')->nullable(); // Nullable profile picture field
             $table->enum('role_id', ['admin', 'professor', 'student'])->default('student'); // Enum for user role
+            $table->rememberToken(); 
             $table->timestamps(); // Adds created_at and updated_at
         });
 

@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('title'); // Title of the lesson
             $table->text('content')->nullable(); // Lesson content (optional)
             $table->string('video_url')->nullable(); // Video URL for the lesson (optional)
-            $table->integer('order'); // Order of the lesson within the module
+            $table->integer('order_number'); // Order of the lesson within the module
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }
