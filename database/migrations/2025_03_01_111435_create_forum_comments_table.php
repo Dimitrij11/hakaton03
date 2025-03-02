@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->text('content'); // Comment content
             $table->foreignId('parent_id')->nullable()->constrained('forum_comments')->onDelete('cascade'); // If it's a reply to another comment
             $table->timestamps(); // Created_at and updated_at timestamps
+            $table->softDeletes();
         });
     }
 

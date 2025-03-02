@@ -6,6 +6,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;  // ✅ Step 1: Import SoftDeletes
+
 
 class User extends Authenticatable
 {
@@ -70,4 +72,8 @@ class User extends Authenticatable
     {
         return $this->role === 'professor';
     }
+
+    use SoftDeletes; // ✅ Step 2: Enable SoftDeletes
+
+    protected $dates = ['deleted_at']; // ✅ Step 3: Define deleted_at column
 }

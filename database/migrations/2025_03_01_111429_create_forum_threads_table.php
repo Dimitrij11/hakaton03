@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('title'); // Title of the thread
             $table->text('content'); // Content or description of the thread
             $table->timestamps(); // Created_at and updated_at timestamps
+            $table->softDeletes();
         });
     }
 

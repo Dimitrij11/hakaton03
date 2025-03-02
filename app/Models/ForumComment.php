@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;  // ✅ Step 1: Import SoftDeletes
 
 class ForumComment extends Model
 {
@@ -51,4 +52,8 @@ class ForumComment extends Model
     {
         return $this->hasMany(ForumComment::class, 'parent_id');
     }
+
+    use SoftDeletes; // ✅ Step 2: Enable SoftDeletes
+
+    protected $dates = ['deleted_at']; // ✅ Step 3: Define deleted_at column
 }

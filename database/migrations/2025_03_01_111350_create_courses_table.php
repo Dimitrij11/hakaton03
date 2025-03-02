@@ -22,6 +22,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('category_id'); // Foreign key to the category table
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps(); // Timestamps for created_at and updated_at
+            $table->softDeletes();
         });
     }
 

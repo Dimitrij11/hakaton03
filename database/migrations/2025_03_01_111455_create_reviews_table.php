@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->tinyInteger('rating')->unsigned()->default(1); // Rating from 1 to 5 stars (1 is default)
             $table->text('comment')->nullable(); // Optional text field for comments
             $table->timestamps(); // Timestamps for created_at and updated_at
+            $table->softDeletes();
         });
     }
 

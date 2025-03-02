@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->timestamp('sent_at')->useCurrent(); // Timestamp for when the message was sent
             $table->boolean('is_read')->default(false); // Flag to track if the message has been read
             $table->timestamps(); // Created_at and updated_at timestamps
+            $table->softDeletes();  // ✅ Adds deleted_at column
         });
     }
 

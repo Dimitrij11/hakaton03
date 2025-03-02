@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;  // ✅ Step 1: Import SoftDeletes
 
 class CourseProfessor extends Model
 {
@@ -39,4 +40,8 @@ class CourseProfessor extends Model
     {
         return $this->belongsTo(ProfessorData::class, 'professor_id');
     }
+
+    use SoftDeletes; // ✅ Step 2: Enable SoftDeletes
+
+    protected $dates = ['deleted_at']; // ✅ Step 3: Define deleted_at column
 }
